@@ -1,4 +1,4 @@
-import {db} from '../config/db.js'
+import { db } from "../config/db.js";
 
 export const createTransaction = async (req, res) => {
   try {
@@ -89,7 +89,7 @@ export const getTransactionSummaryByUserId = async (req, res) => {
         SELECT COALESCE(SUM(amount), 0) AS expenses
         FROM transactions
         WHERE user_id = ${userId} 
-        AND amount > 0
+        AND amount < 0
         `;
 
     res.status(201).json({
